@@ -1,26 +1,21 @@
 # coding: utf-8
-# require "optparse"
-require "prawn"
-require "open-uri"
 require "mini_magick"
+require "open-uri"
+require "prawn"
 require "yaml"
 require "./lib/txt2yaml"
+require "./lib/util"
 
 $font_faces = Hash.new
 $font_faces["mincho"] = "fonts/ipaexm.ttf"
 $font_faces["gothic"] = "fonts/ipaexg.ttf"
 
-$txt2yaml = TXT2YAMLConverter.new
-
 DEFAULT_FONT_FACE = "mincho"
 DEFAULT_FONT_SIZE = 12
 DEFAULT_LINE_WIDTH = 0.5
-DPI = 75
 
 class CVMaker
-  def size(s)
-    $txt2yaml.size(s)
-  end
+  include Util
 
   def line_style(h)
     if h.has_key?("line_style")
@@ -79,13 +74,16 @@ class CVMaker
     width = size(h["width"])
     height = size(h["height"])
     file = @data["photo"]
-    # unless file.strip !~ /^https?|^ftp\:\/\//
-    #   file = open(file).path
-    # end
-    # minimagickでは URL/filePath 不分別
+    unless file.strip !~ /^https?|^ftp\:\/\//
+      file = open(file).path
+    end
     image = MiniMagick::Image.new(file)
-    # minimagickの auto_orient に画像の向きを調整
-    image.auto_orient
+    # 画像の向きを調整、切り抜き
+    image.combine_options do |img|
+      img.auto_orient
+      img.gravity(:center)
+      img.crop(resize_image_opt(image, width, height))
+    end
     @doc.image(image.path, :at => [x, y], :width => width, :height => height)
   end
 
@@ -265,41 +263,4 @@ class CVMaker
     end
     @doc
   end
-
-  def load(input_file, style_file, output_file)
-    @data = YAML.load_file(input_file)
-    @doc = Prawn::Document.new(:page_size => "A4")
-    puts "input  file: #{input_file}"
-    puts "style  file: #{style_file}"
-    puts "output file: #{output_file}"
-    yaml_style = nil
-    if style_file =~ /\.txt$/
-      yaml_style = $txt2yaml.load(style_file)
-    else
-      yaml_style = YAML.load_file(style_file)
-    end
-    yaml_style.each do |i|
-      send(i["type"], i)
-    end
-    @doc.render_file output_file
-    puts "Done."
-  end
 end
-
-# def parse_option
-#   args = {}
-#   OptionParser.new do |op|
-#     op.on("-i [datafile]", "--input [datafile]") { |v| args[:input] = v }
-#     op.on("-s [stylefile]", "--style [stylefile]") { |v| args[:style] = v }
-#     op.on("-o [output]", "--output [output]") { |v| args[:output] = v }
-#     op.parse!(ARGV)
-#   end
-#   args
-# end
-
-# args = parse_option
-# input_file = args.fetch(:input, "data.yaml")
-# style_file = args.fetch(:style, "style.txt")
-# output_file = args.fetch(:output, "output2.pdf")
-
-# CVMaker.new.load(input_file, style_file, output_file)
