@@ -31,7 +31,8 @@ post '/create' do
     @doc.render
   rescue => exception
     p exception
+    @error_msg = exception.message
     status 403
-    return 'Error'
+    erb :error
   end
 end

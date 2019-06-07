@@ -1,14 +1,7 @@
 ($ => {
   const FILE_SIZE_LIMIT = 2 // 2mega
   $(() => {
-    const editorOpt = {
-      mode: "yaml",
-      theme: 'eclipse',
-      lineNumbers: true,
-      indentUnit: 4
-    }
-    window.dataYamlEditor = CodeMirror.fromTextArea(document.getElementById('data_yml'), editorOpt)
-    window.styleTxtEditor = CodeMirror.fromTextArea(document.getElementById('style_txt'), editorOpt)
+    initEditor()
 
     $(document)
       .on('click', '#photoBtn', () => {
@@ -37,8 +30,24 @@
   })
 })(jQuery)
 
-function editorSave() {
-  dataYamlEditor.save()
-  styleTxtEditor.save()
-  return true
+function initEditor() {
+  const [dataYamlArea, styleTxtArea] = ['data_yml', 'style_txt'].map(id => {
+    return document.getElementById(id)
+  })
+  if (!dataYamlArea || !styleTxtArea) {
+    return
+  }
+  const editorOpt = {
+    mode: "yaml",
+    theme: 'eclipse',
+    lineNumbers: true,
+    indentUnit: 4
+  }
+  window.dataYamlEditor = CodeMirror.fromTextArea(dataYamlArea, editorOpt)
+  window.styleTxtEditor = CodeMirror.fromTextArea(styleTxtArea, editorOpt)
+  window.editorSave = () => {
+    dataYamlEditor.save()
+    styleTxtEditor.save()
+    return true
+  }
 }
