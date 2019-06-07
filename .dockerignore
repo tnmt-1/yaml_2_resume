@@ -1,5 +1,19 @@
+# git
+.git
+.gitignore
+LICENSE
+VERSION
+README.md
+Changelog.md
+# Makefile
+Dockerfile
+docker-compose.yml
+docs
+
+# production
 fonts
 *.pdf
+sample
 
 # Created by https://www.gitignore.io/api/ruby
 # Edit at https://www.gitignore.io/?templates=ruby

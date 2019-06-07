@@ -2,12 +2,13 @@ FROM ruby:alpine
 
 # Setup
 RUN set -x && apk update && apk upgrade && apk add --no-cache \
-  gnupg gcc g++ make unzip curl openssh-client git bash
+  gnupg gcc g++ make unzip curl openssh-client git bash imagemagick
 RUN gem install bundler
 
 WORKDIR /usr/src/
 
-RUN git clone https://github.com/jerrywdlee/yaml_2_resume.git app
+# RUN git clone https://github.com/jerrywdlee/yaml_2_resume.git app
+ADD ./ /usr/src/app/
 
 WORKDIR /usr/src/app
 

@@ -2,6 +2,7 @@
   const FILE_SIZE_LIMIT = 2 // 2mega
   $(() => {
     initEditor()
+    initPhotoBtn()
 
     $(document)
       .on('click', '#photoBtn', () => {
@@ -16,12 +17,7 @@
             alert(`写真データを ${FILE_SIZE_LIMIT}m 以下にしてください！`)
             el.value = ''
           } else {
-            let fileName = file.name
-            if (fileName.length > 10) {
-              const l = fileName.length
-              fileName = '...' + fileName.substring(l - 10, l)
-            }
-            $('#photoBtn').text(fileName)
+            setPhotoBtn(file)
           }
         } else {
           $('#photoBtn').text('写真をアップ')
@@ -50,4 +46,23 @@ function initEditor() {
     styleTxtEditor.save()
     return true
   }
+}
+
+function initPhotoBtn() {
+  const fileInput = document.querySelector('#photoInput')
+  if (fileInput) {
+    const file = fileInput.files[0]
+    if (file) {
+      setPhotoBtn(file)
+    }
+  }
+}
+
+function setPhotoBtn(file) {
+  let fileName = file.name
+  if (fileName.length > 10) {
+    const l = fileName.length
+    fileName = '...' + fileName.substring(l - 10, l)
+  }
+  $('#photoBtn').text(fileName)
 }
