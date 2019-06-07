@@ -25,5 +25,20 @@
           $('#photoBtn').text('写真をアップ')
         }
       })
+      .on('keyup', '#data_yml_code', ev => {
+        // TODO: Reload highlight when code change
+        // const el = ev.currentTarget
+        // const text = $(el).text()
+        // $(el).html(text)
+        // hljs.highlightBlock(el)
+      })
   })
 })(jQuery)
+
+function copyContent() {
+  const dataYml = $('#data_yml_code').text()
+  $('[name=data_yml]').val(dataYml)
+  const styleTxt = $('#style_txt_code').text()
+  $('[name=style_txt]').val(styleTxt)
+  return true
+}

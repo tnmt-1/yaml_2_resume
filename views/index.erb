@@ -1,8 +1,8 @@
 <main>
   <div class="container main-container">
-    <form action="/create" method="post" enctype="multipart/form-data">
+    <form action="/create" method="post" onsubmit='return copyContent()' enctype="multipart/form-data">
       <div class="columns">
-        <div class="column">
+        <div class="column is-half">
           <label class="label is-medium">
             Data.yml&nbsp;&nbsp;
             <a href="https://qiita.com/kaityo256/items/e3884d0109223c324baf"
@@ -16,11 +16,12 @@
             </span>
           </label>
           <div class="control">
-            <textarea class="textarea" name="data_yml"
-              placeholder="data.yml" rows="15"><%= @data_yml %></textarea>
+            <pre><code id="data_yml_code" class="yaml code-area" contenteditable="true"><%= @data_yml %></code></pre>
+            <textarea class="textarea" name="data_yml" style="display:none"
+              placeholder="data.yml" rows="15"></textarea>
           </div>
         </div>
-        <div class="column">
+        <div class="column is-half">
           <label class="label is-medium">
             Style.txt&nbsp;&nbsp;
             <a href="https://qiita.com/kaityo256/items/e3884d0109223c324baf"
@@ -29,8 +30,9 @@
             </a>
           </label>
           <div class="control">
-            <textarea class="textarea" name="style_txt"
-              placeholder="style.txt" rows="15"><%= @style_txt %></textarea>
+            <pre><code id="style_txt_code" class="csv code-area" contenteditable="true"><%= @style_txt %></code></pre>
+            <textarea class="textarea" name="style_txt" style="display:none"
+              placeholder="style.txt" rows="15"></textarea>
           </div>
         </div>
       </div>
