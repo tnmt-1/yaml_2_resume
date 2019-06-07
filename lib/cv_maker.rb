@@ -2,6 +2,7 @@
 # require "optparse"
 require "prawn"
 require "open-uri"
+require "mini_magick"
 require "yaml"
 require "./lib/txt2yaml"
 
@@ -78,11 +79,14 @@ class CVMaker
     width = size(h["width"])
     height = size(h["height"])
     file = @data["photo"]
-    unless file.strip !~ /^https?|^ftp\:\/\//
-      file = open(file).path
-    end
-    # TODO: minimagickのauto_orientに画像の向きを調整
-    @doc.image(file, :at => [x, y], :width => width, :height => height)
+    # unless file.strip !~ /^https?|^ftp\:\/\//
+    #   file = open(file).path
+    # end
+    # minimagickでは URL/filePath 不分別
+    image = MiniMagick::Image.new(file)
+    # minimagickの auto_orient に画像の向きを調整
+    image.auto_orient
+    @doc.image(image.path, :at => [x, y], :width => width, :height => height)
   end
 
   def string(h)
