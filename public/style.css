@@ -7,7 +7,27 @@
 }
 
 .code-area {
+  border: solid 1px #ccc;
+  border-radius: 5px;
+}
+.CodeMirror {
+  font-family: Monaco, 'Andale Mono', 'Lucida Console', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+  font-size: 10pt;
   height: 450px;
+  border-radius: 5px;
+}
+.CodeMirror pre.CodeMirror-line {
+  padding-left: 10px
+}
+.CodeMirror .CodeMirror-gutters {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+@media screen and (min-width: 769px) {
+  .error-container {
+    min-height: calc(100vh - 250px)
+  }
 }
 
 @media screen and (max-width: 1023px) {
