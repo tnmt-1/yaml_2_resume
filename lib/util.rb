@@ -7,18 +7,6 @@ module Util
     ERB.new(File.read(file_path)).result(binding)
   end
 
-  def size(s, dpi = 75)
-    if s =~ /\s*(\-?[0-9\.]+)\s*mm/
-      $1.to_f / 25.4 * dpi
-    elsif s =~ /\s*(-?[0-9\.]+)\s*cm/
-      $1.to_f / 25.4 * dpi * 10
-    elsif s =~ /\s*(-?[0-9\.]+)\s*px/
-      $1.to_f
-    else
-      s.to_f
-    end
-  end
-
   def resize_image_opt(img, w, h)
     w_ori = img[:width].to_f
     h_ori = img[:height].to_f

@@ -15,6 +15,7 @@ DEFAULT_FONT_SIZE = 12
 DEFAULT_LINE_WIDTH = 0.5
 
 class CVMaker
+  include TXT2YAML
   include Util
 
   def line_style(h)
