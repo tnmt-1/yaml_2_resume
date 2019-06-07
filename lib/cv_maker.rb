@@ -81,6 +81,7 @@ class CVMaker
     unless file.strip !~ /^https?|^ftp\:\/\//
       file = open(file).path
     end
+    # TODO: minimagickのauto_orientに画像の向きを調整
     @doc.image(file, :at => [x, y], :width => width, :height => height)
   end
 
