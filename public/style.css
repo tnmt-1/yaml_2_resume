@@ -6,6 +6,10 @@
   display: none;
 }
 
+.code-area {
+  height: 450px;
+}
+
 @media screen and (max-width: 1023px) {
   .main-container {
     padding: 1em;
