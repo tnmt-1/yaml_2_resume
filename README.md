@@ -329,3 +329,11 @@ string,110mm,245mm,$date,font_size=9
 
 - 2018年7月30日 ymboxマクロ及びmiscboxマクロを追加
 - 2018年6月6日 リリース
+
+## Herokuメモ
+
+```sh
+$ heroku create yaml-2-resume
+$ heroku stack:set container
+$ git push heroku master
+```
