@@ -1,6 +1,15 @@
 ($ => {
   const FILE_SIZE_LIMIT = 2 // 2mega
   $(() => {
+    const editorOpt = {
+      mode: "yaml",
+      theme: 'eclipse',
+      lineNumbers: true,
+      indentUnit: 4
+    }
+    window.dataYamlEditor = CodeMirror.fromTextArea(document.getElementById('data_yml'), editorOpt)
+    window.styleTxtEditor = CodeMirror.fromTextArea(document.getElementById('style_txt'), editorOpt)
+
     $(document)
       .on('click', '#photoBtn', () => {
         $('#photoInput').click()
@@ -25,20 +34,11 @@
           $('#photoBtn').text('写真をアップ')
         }
       })
-      .on('keyup', '#data_yml_code', ev => {
-        // TODO: Reload highlight when code change
-        // const el = ev.currentTarget
-        // const text = $(el).text()
-        // $(el).html(text)
-        // hljs.highlightBlock(el)
-      })
   })
 })(jQuery)
 
-function copyContent() {
-  const dataYml = $('#data_yml_code').text()
-  $('[name=data_yml]').val(dataYml)
-  const styleTxt = $('#style_txt_code').text()
-  $('[name=style_txt]').val(styleTxt)
+function editorSave() {
+  dataYamlEditor.save()
+  styleTxtEditor.save()
   return true
 }
