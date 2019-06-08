@@ -1,13 +1,11 @@
 require "yaml"
 
 module TXT2YAML
-  DPI = 75
-
-  def size(s)
+  def size(s, dpi = 75)
     if s =~ /\s*(\-?[0-9\.]+)\s*mm/
-      $1.to_f / 25.4 * DPI
+      $1.to_f / 25.4 * dpi
     elsif s =~ /\s*(-?[0-9\.]+)\s*cm/
-      $1.to_f / 25.4 * DPI * 10
+      $1.to_f / 25.4 * dpi * 10
     elsif s =~ /\s*(-?[0-9\.]+)\s*px/
       $1.to_f
     else
