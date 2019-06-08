@@ -2,6 +2,7 @@ YAMLによる履歴書作成
 ===
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Ruby](https://img.shields.io/badge/ruby-%3E%3D2.3-red.svg)](Ruby)
 
 [kaityo256氏が開発した `yaml_cv`](https://github.com/kaityo256/yaml_cv)のマイクロサービス版です。  
 YAML形式で書かれたデータファイルと、
@@ -10,26 +11,12 @@ YAMLもしくはテキストファイル形式で書かれた[スタイル](http
 
 # Application
 ![sample/photo.png](sample/screen_pc.png)  
-**https://yaml-2-resume.herokuapp.com/**
+**DEMO: https://yaml-2-resume.herokuapp.com/**
+
+[![dockeri.co](https://dockeri.co/image/jerrywdlee/yaml_2_resume)](https://hub.docker.com/r/jerrywdlee/yaml_2_resume)
 
 # インストール＆使用
-## Docker
-
-```sh
-$ docker build -t my_yaml_2_resume .
-$ docker run --rm -p 14567:4567 my_yaml_2_resume
-$ open http://localhost:14567
-```
-
-## Docker Compose
-
-```sh
-$ docker-compose build
-$ docker-compose up
-$ open http://localhost:14567
-```
-
-## Dev Install(Loacl PC)
+## ローカルインストール
 ### 必要なライブラリ等
 * Ruby >= v2.3
 * bundler >= 2.0
@@ -37,20 +24,38 @@ $ open http://localhost:14567
 * [IAPexフォント](https://ipafont.ipa.go.jp/node193#jp)
 
 ### MacOS
-
+#### 依存パケージのインストール
 ```sh
 $ brew install imagemagick
 $ gem install bundler
 $ bundle install
+```
 
-# フォントをダウンロード、バージョンは適宜に替えていいです
+#### フォントのダウンロード、バージョンは適宜に替えていいです
+```sh
 $ curl https://oscdl.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip
 $ unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
+```
+
+上記コマンドを使わなくても、[ここ](https://ipafont.ipa.go.jp/node193#jp)よりフォントを
+ダウンロードして、下記の配置になるよう解凍すればいい。
+
+```
+├── fonts
+│   ├── ipaexg.ttf
+│   └── ipaexm.ttf
+└── make_cv.rb
+```
+
+#### アプリの起動
+##### webアプリとして
+
+```sh
 $ ruby app.rb
 $ open http://localhost:4567
 ```
 
-また、ローカルでは[kaityo256/yaml_cv](https://github.com/kaityo256/yaml_cv)が提供したコマンドも実行できます。
+##### また、ローカルでは[kaityo256/yaml_cv](https://github.com/kaityo256/yaml_cv)が提供したコマンドも実行できる。
 
 ```sh
 $ ruby make_cv.rb -h
@@ -62,6 +67,57 @@ Usage: make_cv [options]
 
 ```sh
 ruby make_cv.rb -i templates/data.yaml -s templates/style.txt -o output.pdf
+```
+## Dockerを使う
+### 純Docker(Webアプリとして)
+#### ローカルでビルドする
+
+```sh
+$ docker build -t my_yaml_2_resume .
+$ docker run --rm -p 14567:4567 my_yaml_2_resume
+$ open http://localhost:14567
+```
+
+#### [Docker Hub](https://cloud.docker.com/repository/docker/jerrywdlee/yaml_2_resume)を利用する
+
+```sh
+$ docker pull jerrywdlee/yaml_2_resume:latest
+$ docker run --rm -p 14567:4567 jerrywdlee/yaml_2_resume
+$ open http://localhost:14567
+```
+
+## Docker Composeを使う
+### Webアプリ
+```sh
+$ docker-compose build
+$ docker-compose up
+$ open http://localhost:14567
+```
+
+### CMDモード
+`share/`の配下にご自分のデータを置いて、`docker-compose.yml`の`command`フィールドを修正して使う。もちろん、`templates/`配下のサンプルデータも使える。
+
+```diff
+version: '3.5'
+services:
+  yaml_2_resume:
+    container_name: yaml_2_resume
+    build: .
+    ports:
+      - 14567:4567
+    working_dir: /usr/src/app
+    volumes:
+      - ./share:/usr/src/app/share
+    # web app mode
+-    command: ruby app.rb -o 0.0.0.0
+    # cmd mode
++    command: ruby make_cv.rb -i share/YOUR_DATA.yaml -s share/YOUR_STYLE.txt -o share/output.pdf
+```
+
+```sh
+$ docker-compose build
+$ docker-compose up
+$ open ./share/output.pdf
 ```
 
 ## HerokuでDeploy

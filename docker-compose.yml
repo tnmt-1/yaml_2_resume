@@ -6,5 +6,9 @@ services:
     ports:
       - 14567:4567
     working_dir: /usr/src/app
-    # command: ruby app.rb -o 0.0.0.0 -p 4567
+    volumes:
+      - ./share:/usr/src/app/share
+    # web app mode
     command: ruby app.rb -o 0.0.0.0
+    # cmd mode
+    # command: ruby make_cv.rb -i templates/academic.yaml -s templates/academic.txt -o share/output.pdf
