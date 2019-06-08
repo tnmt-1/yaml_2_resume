@@ -76,8 +76,8 @@ $ git push heroku master
 
 - `data.yaml`の`photo`フィールドは、URLも使えることになった。
 - 提供された画像は向きを補正し、サイズも自動調節することになった。
-- `data.yaml`と`style.txt`の中に、`erb`文法が書けるようになった。
+- コマンドモードを使う際、`data.yaml`と`style.txt`の中に、`erb`文法が書けるようになった。
 - `data.yaml`に`@date`で現在の年月日を出していて、[和暦](https://github.com/sugi/wareki)も使えることになった。
 - サンプルデータとスタイルは`templates/`配下に置いた。
-- サンプルデータを当て障りのない文章に再構成した。
+- サンプルデータを当たり障りのない文章に再構成した。
 - サンプル写真を[StyleGAN](https://github.com/NVlabs/stylegan)で生成された偽の人物像を使った
