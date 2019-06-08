@@ -13,8 +13,8 @@ ADD ./ /usr/src/app/
 WORKDIR /usr/src/app
 
 RUN bundle install
-RUN curl https://oscdl.ipa.go.jp/IPAexfont/IPAexfont00301.zip > fonts.zip && \
+RUN curl https://oscdl.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip && \
   unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 
-# EXPOSE 5000
-# CMD ["ruby", "app.rb", "-o", "0.0.0.0", "-p", "5000"]
+EXPOSE 4567
+CMD ["ruby", "app.rb", "-o", "0.0.0.0", "-p", "4567"]
