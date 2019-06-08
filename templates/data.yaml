@@ -7,7 +7,7 @@ gender: 男
 cell_phone: 090-1234-5678
 email: rireki-taro@example.org
 # 写真をアップロードした場合、このフィールドが無視されます
-photo: https://cdn.jsdelivr.net/gh/jerrywdlee/yaml_cv@master/photo.jpg
+photo: https://cdn.jsdelivr.net/gh/jerrywdlee/yaml_cv@master/photo.png
 
 # 住所
 address_kana: とうきょうとちよだくちよだ
