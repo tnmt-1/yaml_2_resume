@@ -82,6 +82,7 @@ class CVMaker
     # 画像の向きを調整、切り抜き
     image.combine_options do |img|
       img.auto_orient
+      img.strip # EXIF情報の除去
       img.gravity(:center)
       img.crop(resize_image_opt(image, width, height))
     end
