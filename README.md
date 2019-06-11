@@ -9,11 +9,12 @@ YAML形式で書かれたデータファイルと、
 YAMLもしくはテキストファイル形式で書かれた[スタイル](https://qiita.com/kaityo256/items/e3884d0109223c324baf)
 から履歴書PDFファイルを作成します。
 
-# Application
-![sample/photo.png](sample/screen_pc.png)  
-**DEMO: https://yaml-2-resume.herokuapp.com/**
-
 [![dockeri.co](https://dockeri.co/image/jerrywdlee/yaml_2_resume)](https://hub.docker.com/r/jerrywdlee/yaml_2_resume)
+
+# Application
+**DEMO: https://yaml-2-resume.herokuapp.com/**  
+
+![sample/photo.png](sample/screen_pc.png)  
 
 # インストール＆使用
 ## ローカルインストール
@@ -68,6 +69,12 @@ Usage: make_cv [options]
 ```sh
 ruby make_cv.rb -i templates/data.yaml -s templates/style.txt -o output.pdf
 ```
+
+##### テストの実行
+```sh
+$ bundle exec rspec
+```
+
 ## Dockerを使う
 ### 純Docker(Webアプリとして)
 #### ローカルでビルドする
@@ -134,6 +141,7 @@ $ git push heroku master
 - 提供された画像は向きを補正し、サイズも自動調節することになった。
 - コマンドモードを使う際、`data.yaml`と`style.txt`の中に、`erb`文法が書けるようになった。
 - `data.yaml`に`@date`で現在の年月日を出していて、[和暦](https://github.com/sugi/wareki)も使えることになった。
+  - セキュリティの観点で、WEB版では`erb`文法の利用ができません。
 - サンプルデータとスタイルは`templates/`配下に置いた。
 - サンプルデータを当たり障りのない文章に再構成した。
-- サンプル写真を[StyleGAN](https://github.com/NVlabs/stylegan)で生成された偽の人物像を使った
+- サンプル写真を[StyleGAN](https://github.com/NVlabs/stylegan)で生成された偽の人物像を使用した。
