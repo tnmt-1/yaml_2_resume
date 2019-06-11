@@ -11,6 +11,7 @@ YAMLによる履歴書作成
 YAML形式で書かれたデータファイルと、
 YAMLもしくはテキストファイル形式で書かれた[スタイル](https://qiita.com/kaityo256/items/e3884d0109223c324baf)
 から履歴書PDFファイルを作成します。
+[Qiita記事はこちら](https://qiita.com/jerrywdlee/items/d0c36549136211937473)
 
 [![dockeri.co](https://dockeri.co/image/jerrywdlee/yaml_2_resume)](https://hub.docker.com/r/jerrywdlee/yaml_2_resume)
 
