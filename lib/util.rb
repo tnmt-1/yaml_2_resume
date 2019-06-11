@@ -14,12 +14,14 @@ module Util
     h_f = h.to_f
     w_tar = w_ori
     h_tar = h_ori
-    if (w_ori / h_ori) > (w_f / h_f)
-      # wが長い
-      w_tar = w_ori * w_f / h_f
+
+    len_max = [w_tar, h_tar].min
+    if w_tar > h_tar
+      h_tar = len_max
+      w_tar = len_max * w_f / h_f
     else
-      # hが長い
-      h_tar = h_ori * h_f / w_f
+      h_tar = len_max * h_f / w_f
+      w_tar = len_max
     end
     "#{w_tar.to_i}x#{h_tar.to_i}+0+0!"
   end

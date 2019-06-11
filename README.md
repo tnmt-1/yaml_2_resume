@@ -3,6 +3,9 @@ YAMLによる履歴書作成
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![Ruby](https://img.shields.io/badge/ruby-%3E%3D2.3-red.svg)](Ruby)
+[![Build Status](https://travis-ci.com/jerrywdlee/yaml_2_resume.svg?branch=master)](https://travis-ci.com/jerrywdlee/yaml_2_resume)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/82051a8ba32117145b21/test_coverage)](https://codeclimate.com/github/jerrywdlee/yaml_2_resume/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/82051a8ba32117145b21/maintainability)](https://codeclimate.com/github/jerrywdlee/yaml_2_resume/maintainability)
 
 [kaityo256氏が開発した `yaml_cv`](https://github.com/kaityo256/yaml_cv)のマイクロサービス版です。  
 YAML形式で書かれたデータファイルと、
