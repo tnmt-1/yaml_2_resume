@@ -1,5 +1,6 @@
 # 名前等
-date: <%= @date.strftime("%Jf") %>現在
+# date が空白の時、今日の日付(和暦)が自動で入ります
+# date: <%= @date.strftime("%Jf") %>現在
 name_kana: りれき　たろう
 name: 履歴　太郎
 birth_day: <%= (@date << 25 * 12).strftime("%Jf") %> (満 25 歳)

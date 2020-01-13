@@ -2,7 +2,9 @@
 require "mini_magick"
 require "open-uri"
 require "prawn"
+require "wareki"
 require "yaml"
+
 require "./lib/txt2yaml"
 require "./lib/util"
 
@@ -259,6 +261,7 @@ class CVMaker
 
   def generate(data, style)
     @data = data
+    @data['date'] ||= Date.today.strftime("%Jf") + "現在"
     @doc = Prawn::Document.new(:page_size => "A4")
     style.each do |i|
       send(i["type"], i)
