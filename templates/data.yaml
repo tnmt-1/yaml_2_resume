@@ -3,7 +3,9 @@
 # date: <%= @date.strftime("%Jf") %>現在
 name_kana: りれき　たろう
 name: 履歴　太郎
-birth_day: <%= (@date << 25 * 12).strftime("%Jf") %> (満 25 歳)
+birth_day: <%= (@date << 25 * 12).strftime("%Jf") %>
+# 年齢は誕生日を基づいて計算し、下記の書式になります
+# <%= (@date << 25 * 12).strftime("%Jf") %> (満 25 歳)
 gender: 男
 cell_phone: 090-1234-5678
 email: rireki-taro@example.org
