@@ -38,7 +38,7 @@ $ bundle install
 
 #### フォントのダウンロード、バージョンは適宜に替えていいです
 ```sh
-$ curl https://oscdl.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip
+$ curl https://ipafont.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip
 $ unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 ```
 

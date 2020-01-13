@@ -13,7 +13,7 @@ ADD ./ /usr/src/app/
 WORKDIR /usr/src/app
 
 RUN bundle install
-RUN curl https://oscdl.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip && \
+RUN curl https://ipafont.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip && \
   unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 
 EXPOSE 4567
