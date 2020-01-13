@@ -56,7 +56,7 @@ $ unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 ##### webアプリとして
 
 ```sh
-$ ruby app.rb
+$ bundle exec ruby app.rb
 $ open http://localhost:4567
 ```
 
@@ -68,6 +68,7 @@ Usage: make_cv [options]
     -i, --input [datafile]
     -s, --style [stylefile]
     -o, --output [output]
+    -v, --version
 ```
 
 ```sh

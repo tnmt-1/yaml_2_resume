@@ -17,4 +17,4 @@ RUN curl https://ipafont.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip && \
   unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 
 EXPOSE 4567
-CMD ["ruby", "app.rb", "-o", "0.0.0.0", "-p", "4567"]
+CMD ["bundle exec ruby app.rb", "-o", "0.0.0.0", "-p", "4567"]
