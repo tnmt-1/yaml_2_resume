@@ -3,6 +3,7 @@ require "optparse"
 require "prawn"
 require "yaml"
 
+require './config'
 require './lib/cv_maker'
 require './lib/txt2yaml'
 require './lib/util'
@@ -15,6 +16,7 @@ def parse_option
     op.on("-i [datafile]", "--input [datafile]") { |v| args[:input] = v }
     op.on("-s [stylefile]", "--style [stylefile]") { |v| args[:style] = v }
     op.on("-o [output]", "--output [output]") { |v| args[:output] = v }
+    op.on("-v", "--version") { |v| args[:version] = v }
     op.parse!(ARGV)
   end
   args
@@ -63,6 +65,10 @@ end
 check_fonts
 
 args = parse_option
+if args[:version]
+  puts Config.VERSION
+  exit(0)
+end
 input_file = args.fetch(:input, "templates/data.yaml")
 style_file = args.fetch(:style, "templates/style.txt")
 output_file = args.fetch(:output, "output.pdf")

@@ -2,7 +2,9 @@
 require "mini_magick"
 require "open-uri"
 require "prawn"
+require "wareki"
 require "yaml"
+
 require "./lib/txt2yaml"
 require "./lib/util"
 
@@ -259,6 +261,20 @@ class CVMaker
 
   def generate(data, style)
     @data = data
+    # 今日の日付を入力
+    @data['date'] ||= Date.today.strftime("%Jf") + "現在"
+    # 年齢を計算、「平成7年1月13日 (満 25 歳)」のような入力であれば、
+    # 故意にエラーを発生させて計算はしない
+    begin
+      current_date = Date.parse(@data['date'])
+      birthday = Date.parse(@data['birth_day'])
+      age = current_date.strftime('%Y%m%d').to_i
+      age -= birthday.strftime('%Y%m%d').to_i
+      age /= 10000
+      @data['birth_day'] += " (満 #{age} 歳)"
+    rescue => e
+      puts e.message
+    end
     @doc = Prawn::Document.new(:page_size => "A4")
     style.each do |i|
       send(i["type"], i)

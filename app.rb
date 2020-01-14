@@ -2,6 +2,7 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
+require './config'
 require './lib/cv_maker'
 require './lib/txt2yaml'
 require './lib/util'

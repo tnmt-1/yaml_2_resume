@@ -38,7 +38,7 @@ $ bundle install
 
 #### フォントのダウンロード、バージョンは適宜に替えていいです
 ```sh
-$ curl https://oscdl.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip
+$ curl https://ipafont.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip
 $ unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 ```
 
@@ -56,7 +56,7 @@ $ unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 ##### webアプリとして
 
 ```sh
-$ ruby app.rb
+$ bundle exec ruby app.rb
 $ open http://localhost:4567
 ```
 
@@ -68,6 +68,7 @@ Usage: make_cv [options]
     -i, --input [datafile]
     -s, --style [stylefile]
     -o, --output [output]
+    -v, --version
 ```
 
 ```sh
@@ -146,6 +147,9 @@ $ git push heroku master
 - コマンドモードを使う際、`data.yaml`と`style.txt`の中に、`erb`文法が書けるようになった。
 - `data.yaml`に`@date`で現在の年月日を出していて、[和暦](https://github.com/sugi/wareki)も使えることになった。
   - セキュリティの観点で、WEB版では`erb`文法の利用ができません。
+- `data.yaml`の `date: 令和2年1月14日現在` は空白の場合、和暦で本日の日付が入れられます。
+- `data.yaml`の `birth_day` Field「日付」はのみ記入した場合、年齢が自動で計算されます。
+  - 「日付」の書式については、[和暦](https://github.com/sugi/wareki#%E3%83%91%E3%83%BC%E3%82%B9)または[西暦](https://docs.ruby-lang.org/ja/latest/class/Date.html#S_PARSE)が使えます。
 - サンプルデータとスタイルは`templates/`配下に置いた。
 - サンプルデータを当たり障りのない文章に再構成した。
 - サンプル写真を[StyleGAN](https://github.com/NVlabs/stylegan)で生成された偽の人物像を使用した。
