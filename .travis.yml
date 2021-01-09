@@ -1,13 +1,13 @@
 language: ruby
 rvm:
-  - 2.6.3
+  - 2.7.2
 before_install:
   - gem install bundler -v '> 2'
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  - curl https://ipafont.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip
+  - curl https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip > fonts.zip
   - unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 script:
   - bundle exec rspec
