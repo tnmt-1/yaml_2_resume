@@ -26,7 +26,7 @@ YAMLもしくはテキストファイル形式で書かれた[スタイル](http
 * Ruby >= v2.3
 * bundler >= 2.0
 * [ImageMagick](https://imagemagick.org/index.php)
-* [IAPexフォント](https://ipafont.ipa.go.jp/node193#jp)
+* [IAPexフォント](https://moji.or.jp/ipafont/)
 
 ### MacOS
 #### 依存パケージのインストール
@@ -38,11 +38,11 @@ $ bundle install
 
 #### フォントのダウンロード、バージョンは適宜に替えていいです
 ```sh
-$ curl https://ipafont.ipa.go.jp/IPAexfont/IPAexfont00401.zip > fonts.zip
+$ curl https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip > fonts.zip
 $ unzip -oj fonts.zip -d fonts/ && rm -rf fonts.zip
 ```
 
-上記コマンドを使わなくても、[ここ](https://ipafont.ipa.go.jp/node193#jp)よりフォントを
+上記コマンドを使わなくても、[ここ](https://moji.or.jp/ipafont/)よりフォントを
 ダウンロードして、下記の配置になるよう解凍すればいい。
 
 ```
