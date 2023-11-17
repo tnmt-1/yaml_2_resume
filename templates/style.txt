@@ -57,6 +57,8 @@ string,20mm,171mm,$address_kana2,font_size=9
 string,2mm,165mm,連絡先 〒,font_size=9
 string,15mm,165mm,$address_zip2,font_size=9
 string,15mm,159mm,$address2,font_size=12
+
+# 学歴・職歴
 box,0mm,17mm,177mm,119mm,line_width=2
 multi_lines,0mm,24mm,177mm,0,16,0,7mm
 line,19mm,136mm,0,-119mm
@@ -67,34 +69,46 @@ string,77mm,134mm,学歴・職歴（各項目ごとにまとめて書く）,font
 education_experience,128mm,3mm,24mm,35mm,7mm,95mm,155mm,font_size=12
 string,1mm,14mm,記入上の注意,font_size=9
 string,22mm,14mm,数字はアラビア数字で、文字はくずさず正確に書く。,font_size=9
+
+# ２ページ目
 new_page
-box,0,190mm,177mm,49mm,line_width=2
-line,19mm,239mm,0,-49mm
-line,31mm,239mm,0,-49mm
-multi_lines,0mm,232mm,177mm,0,6,0,-7mm
+
+# 免許・資格
+box,0,175mm,177mm,64mm,line_width=2
+line,19mm,239mm,0,-64mm
+line,31mm,239mm,0,-64mm
+multi_lines,0mm,232mm,177mm,0,8,0,-7mm
 string,8mm,237mm,年,font_size=9
 string,24mm,237mm,月,font_size=9
 string,90mm,237mm,免許・資格,font_size=9
 history,230mm,3mm,24mm,35mm,-7mm,$licences,font_size=12
-box,0,167mm,177mm,15mm,line_width=2
-string,2mm,180mm,通勤時間,font_size=9
-string,5mm,173mm,$commuting_time,font_size=12
-string,59mm,180mm,扶養家族,font_size=9
-string,59mm,173mm,(配偶者を除く),font_size=9
-string,85mm,173mm,$dependents,font_size=12
-string,99mm,180mm,配偶者,font_size=9
-string,116mm,173mm,$spouse,font_size=12
-string,139mm,180mm,配偶者の扶養義務,font_size=9
-string,155mm,173mm,$supporting_spouse,font_size=12
-line,57mm,167mm,0,15mm
-line,97mm,167mm,0,15mm
-line,137mm,167mm,0,15mm
-box,0,120mm,177mm,40mm,line_width=2
-string,2mm,158mm,趣味・特技,font_size=9
-textbox,2mm,152mm,173mm,30mm,$hobby,font_size=13
-box,0,73mm,177mm,40mm,line_width=2
-string,2mm,111mm,志望動機,font_size=9
-textbox,2mm,105mm,173mm,30mm,$motivation,font_size=13
-box,0,26mm,177mm,40mm,line_width=2
-string,2mm,64mm,本人希望記入欄,font_size=9
-textbox,2mm,58mm,173mm,30mm,$request,font_size=13
+
+# 通勤時間など
+box,0,152mm,177mm,15mm,line_width=2
+string,2mm,165mm,通勤時間,font_size=9
+string,5mm,158mm,$commuting_time,font_size=12
+string,59mm,165mm,扶養家族,font_size=9
+string,59mm,158mm,(配偶者を除く),font_size=9
+string,85mm,158mm,$dependents,font_size=12
+string,99mm,165mm,配偶者,font_size=9
+string,116mm,158mm,$spouse,font_size=12
+string,139mm,165mm,配偶者の扶養義務,font_size=9
+string,155mm,158mm,$supporting_spouse,font_size=12
+line,57mm,152mm,0,15mm
+line,97mm,152mm,0,15mm
+line,137mm,152mm,0,15mm
+
+# 趣味・特技
+box,0,125mm,177mm,20mm,line_width=2
+string,2mm,143mm,趣味・特技,font_size=9
+textbox,2mm,137mm,173mm,30mm,$hobby,font_size=13
+
+# 志望動機
+box,0,58mm,177mm,60mm,line_width=2
+string,2mm,116mm,志望動機,font_size=9
+textbox,2mm,110mm,173mm,58mm,$motivation,font_size=9
+
+# 本人希望記入欄
+box,0,31mm,177mm,20mm,line_width=2
+string,2mm,49mm,本人希望記入欄,font_size=9
+textbox,2mm,43mm,173mm,10mm,$request,font_size=13
